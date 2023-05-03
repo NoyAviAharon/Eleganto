@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <!-- main css -->
+  <link rel="stylesheet" href="css/main.css" />
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet" />
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="css/all.css" />
+  <title>Eleganto</title>
+  <style></style>
+</head>
+
+<body>
+  <!--
+      https://www.iconfinder.com/icons/185106/armchair_chair_streamline_icon
+      Creative Commons (Attribution 3.0 Unported);
+      https://www.iconfinder.com/webalys
+    -->
+
+  <header>
+    <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <!--
+    https://www.iconfinder.com/icons/185106/armchair_chair_streamline_icon
+    Creative Commons (Attribution 3.0 Unported);
+    https://www.iconfinder.com/webalys
+  -->
+   <a href="index.html" class="navbar-brand">
+    <img src="img/logo.png" alt="company logo" class="logo-img">
+   </a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+    <i class="fas fa-bars"></i>
+   </button>
+   <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item mx-2 ">
+      <a href="index.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item mx-2">
+      <a href="products.html" class="nav-link">Products</a>
+      </li>
+      <li class="nav-item mx-2">
+      <a href="singleproduct.html" class="nav-link">Single Product</a>
+      </li>
+      <li class="nav-item mx-2">
+      <a href="store.php" class="nav-link">Store</a>
+      </li>
+    </ul>
+   </div>
+   <div class="navbar-icons d-flex align-items-center">
+
+    <!--Cart icon-->
+    <a href="store.php" class="navbar-icon mx-2 navbar-cart-icon">
+      <div class="cart-items">0</div>
+      <i class="fas fa-shopping-cart"></i>
+    </a>
+    <!--End of Cart icon-->
+    </div>
+  </nav>
+  <!--End of Navbar-->
+
+
+    <div class="banner-single-product d-flex align-items-center justify-content-center pl-3 pl-lg-5 text-center">
+      <div>
+        <h1 class="text-capitalize text-yellow text-slanted display-4">
+          Eleganto
+        </h1>
+        <h1 class="text-capitalize font-weight-bold display-4">
+          single product
+        </h1>
+      </div>
+    </div>
+
+
+  </header>
+  <!--End of Header Section-->
+
+
+  <!--Single Product-->
+  <section class="single-product py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-10 mx-auto col-lg-4 text-center my-5">
+          <div class="single-product-mg-container">
+            <img src="img/img-products/product-1-red.png" class="img-fluid" alt="">
+          </div>
+
+        </div>
+        <!--info -->
+        <div class="col-10 mx-auto col-lg-8 single-product-info my-5 px-lg-5">
+          <!--ratings-->
+          <div class="ratings">
+            <span class="rating-icon">
+              <i class="fas fa-star"></i>
+            </span>
+            <span class="rating-icon">
+              <i class="fas fa-star"></i>
+            </span>
+            <span class="rating-icon">
+              <i class="fas fa-star"></i>
+            </span>
+            <span class="rating-icon">
+              <i class="fas fa-star"></i>
+            </span>
+            <span class="rating-icon">
+              <i class="far fa-star"></i>
+            </span>
+            <span class="text-capitalize">(25 customer reviews)</span>
+          </div>
+          <!--end of ratings-->
+		
+	    <form id="product-form" action="singleproduct.php" method="post" name="cart" onsubmit="return checkValues()">
+		  <label id="product-name" class="add-card text-uppercase my-2" for="name">Name:</label>
+          <input type="text" id="name" name="name" value="PREMIUM ARMCHAIR" readonly style="border: none;font-weight: bold;"><br>
+		  <label id="product-price" class="add-card text-uppercase my-2" for="price">Base price:</label>
+		  <input type="text" id="price" name="price" value="$200" readonly style="border: none;font-weight: bold;"><br>
+          
+		  
+		  <!-- colors --> 
+		  <label class="text-uppercase" for="color">Color:</label>
+		  <div id="color-options">
+			<label  for="black"><img class="products-color" src="img/img-swatch/black.jpeg" alt="black" width="30" height="30"></label>
+			<input  type="radio" id="black" name="color" value="black">
+
+			<label for="red"><img class="products-color" src="img/img-swatch/red.jpg" alt="Red" width="30" height="30"></label>
+			<input checked type="radio" id="red" name="color" value="red">
+
+			<label for="blue"><img class="products-color" src="img/img-swatch/blue.jpeg" alt="Blue" width="30" height="30"></label>
+			<input type="radio" id="blue" name="color" value="blue">
+
+			<label for="brown"><img class="products-color" src="img/img-swatch/brown.jpg" alt="Brown" width="30" height="30"></label>
+			<input type="radio" id="brown" name="color" value="brown">
+
+			<label for="white"><img class="products-color" src="img/img-swatch/white.jpeg" alt="White" width="30" height="30"></label>
+			<input type="radio" id="white" name="color" value="white">
+		  </div><br>
+		<!-- end of colors -->
+		
+	    <!--sizes-->
+		  <label class="text-uppercase">Enter a size:</label></br>
+		  <p class="lead text-muted">
+			For standard sizes 160X80X80, the base price is $200,</br> every additional 10 cm will cost $5 more.
+		  </p>
+		  <label for="width">Width:</label>
+		  <input type="number" id="width" name="width" placeholder="Example 160 (50-400)" min="50" value= "160"><br>
+
+		  <label for="height">Height:</label>
+		  <input type="number" id="height" name="height" placeholder="Example 80 (50-100)" min="50" value= "80"><br>
+
+		  <label for="depth">Depth:</label>
+		  <input type="number" id="depth" name="depth" placeholder="Example 80 (50-400)" min="50" value= "80"><br>
+
+		  <label for="quantity">Quantity:</label>
+		  <input type="number" id="quantity" name="quantity" min="1" value= "1"><br>
+
+		  <label for="total_price">Total Price:</label>	
+		  <span>$</span>		  
+		  <input type="number" id="total_price" name="total_price" readonly style="border: none;font-weight: bold;"><br>
+		  <button type="button" class="btn btn-black my-2 mx-1 mt-lg-0" onclick="calculatePrice()">Calculate Price</button>
+
+        <!--end of sizes-->
+
+
+          <div class="d-flex flex-wrap">
+            <!-- cart buttons -->
+            <button class="btn btn-yellow my-2 mx-1" type="submit" value="Submit" id="add-to-cart" name="submit">
+              Add to cart
+            </button> 
+			<!-- end of store buttons -->
+          </div>
+		</form>
+
+		  
+		  <!-- View in 3D & AR button outside of form -->
+			<button class="btn btn-yellow my-2 mx-1 mt-lg-0" onclick="openWindow()">
+			   View in 3D & AR
+			</button>
+			
+        </div>
+        <!--end of info -->
+      </div>
+    </div>
+  </section>
+
+  <!--End of Single Product-->
+
+	
+  <table calss="tableProducts">
+    <thead>
+      <tr>
+        <th class="Code">Code</th>
+        <th class="Name">Name</th>
+        <th class="Color">Color</th>
+        <th class="Widt">Width</th>
+        <th class="Height">Height</th>
+        <th class="Depth">Depth</th>
+        <th class="Price">Price</th>
+        <th class="Amount">Amount</th>
+        <th class="Total Price">Total Price</th>
+      </tr>
+    </thead>
+    <tbody class="products">
+
+
+    </tbody>
+  </table>
+
+
+  <!--Newsletter Section-->
+  <section class="partners py-5">
+    <section class="newsletter py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-10 mx-auto text-center">
+            <h2 class="text-uppercase">newsletter</h2>
+            <p>Don't miss out on our latest product releases, special promotions, and exclusive offers!
+              Subscribe to our newsletter today and stay up-to-date with the latest trends in home design, furniture, and decor.
+              Simply enter your email below to join our community of home design enthusiasts.</p>
+            <form>
+              <div class="input-group mt-5 mb-4">
+                <input type="text" class="form-control text-capitalize" placeholder="enter your email">
+                <div class="input-group-append">
+                  <div class="input-group-text form-icon">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-yellow">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!--End of Newsletter Section-->
+
+
+  <!--Skills Section-->
+  <section class="skills py-5">
+    <div class="container">
+      <div class="row">
+        <!--Single Skill-->
+        <div class="col-10 mx-auto col-md-6 col-lg-4 d-flex my-3">
+          <div class="skill-icon mr-3">
+            <i class="fas fa-truck"></i>
+          </div>
+          <div class="skill-text">
+            <h3 class="text-uppercase text-white">free shipping</h3>
+            <p class="text-muted text-capitalize">
+              Enjoy free shipping on all orders at Eleganto. No minimum purchase required.
+            </p>
+          </div>
+        </div>
+        <!--End of Single Skill-->
+        <!--Single Skill-->
+        <div class="col-10 mx-auto col-md-6 col-lg-4 d-flex my-3">
+          <div class="skill-icon mr-3">
+            <i class="fas fa-comment-dollar"></i>
+          </div>
+          <div class="skill-text">
+            <h3 class="text-uppercase text-white">price promise</h3>
+            <p class="text-muted text-capitalize">
+              Eleganto offers a price promise - if you find a lower price on an identical item at another store, we'll match it.
+            </p>
+          </div>
+        </div>
+        <!--End of Single Skill-->
+        <!--Single Skill-->
+        <div class="col-10 mx-auto col-md-6 col-lg-4 d-flex my-3">
+          <div class="skill-icon mr-3">
+            <i class="fas fa-award"></i>
+          </div>
+          <div class="skill-text">
+            <h3 class="text-uppercase text-white">lifetime warranty</h3>
+            <p class="text-muted text-capitalize">
+              Shop with confidence at Eleganto - we offer a lifetime warranty on all our products.
+            </p>
+          </div>
+        </div>
+        <!--End of Single Skill-->
+      </div>
+    </div>
+  </section>
+  <!--End of Skills Section-->
+
+  <!--Footer Section-->
+  <footer class="py-5 footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-10 mx-auto text-center">
+          <h1 class="text-uppercase font-weight-bold text-yellow footer-title text-center d-inline-block">
+            Eleganto
+          </h1>
+          <div class="footer-icons my-5 d-flex justify-content-center">
+            <!--Single Icon-->
+            <a href="https://www.facebook.com/profile.php?id=100075578007039&mibextid=LQQJ4d" class="footer-icon mx-2">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <!--End of Single Icon-->
+            <!--Single Icon-->
+            <a href="https://rb.gy/li3a7" class="footer-icon mx-2">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <!--End of Single Icon-->
+            <!--Single Icon-->
+            <a href="https://instagram.com/eleganto_homedecor?igshid=YmMyMTA2M2Y=" class="footer-icon mx-2">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <!--End of Single Icon-->
+          </div>
+          <!--End of Footer Icons-->
+          <p class="text-muted text-capitalize w-75 mx-auto text-center">
+            Design your dream furniture for your home with Eleganto!</br>
+            With our augmented reality technology, you can see your custom designs come</br>
+            to life right in your own private space through your phone screen.</br> Discover how our home products will look in your home before you make a purchase.
+            Try it out now!
+          </p>
+          <div class="footer-contact mt-5 d-flex justify-content-around flex-wrap">
+            <!--Single contact-->
+            <div class="text-capitalize">
+              <span class="footer-icon mr-2">
+                <i class="fas fa-map"></i>
+              </span>
+              Havoda 65, Ashdod
+            </div>
+            <!--End of Single contact-->
+            <!--Single contact-->
+            <div class="text-capitalize">
+              <span class="footer-icon mr-2">
+                <i class="fas fa-phone"></i>
+              </span>
+              phone : 050-429-8614
+            </div>
+            <!--End of Single contact-->
+            <!--Single contact-->
+            <div class="text-capitalize">
+              <span class="footer-icon mr-2">
+                <i class="fas fa-envelope"></i>
+              </span>
+              email : elegantodesign1@gmail.com
+            </div>
+            <!--End of Single contact-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--End of Footer Section-->
+
+
+
+  <script>
+
+  </script>
+
+  <!-- script js -->
+  <script src="js/app.js"></script>
+
+
+</body>
+
+</html>
