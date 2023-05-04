@@ -1,0 +1,38 @@
+html {
+  height: 100%;
+  background-color: beige;
+  text-align: center;
+  font-family: 'Courgette', cursive;
+}
+
+img {
+  max-width: 100%;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  background-color: beige;
+  padding: 20px;
+}
+
+.text {
+  margin-right: 20px;
+  text-align: left;
+}
+
+.logo-img {
+  width: 30%;
+  height: auto;
+  display: block;
+  margin: auto;
+  margin-top: 10px;
+}
