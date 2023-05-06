@@ -19,10 +19,10 @@ $query = "INSERT INTO registration (name, email, password)
 
 
 if ($conn->query($query) === FALSE) {
-    echo "Can not add new product. Error is: " . $conn->error;
+    echo "Can not add new user. Error is: " . $conn->error;
     exit();
 }
 
-echo "Registration was successful, please proceed to the payment page.<br> <a href='paymentPage'>Click here to pay</a>";
+echo "Registration was successful, please proceed to the payment page.<br> <a href='paymentPage.html'>Click here to pay</a>";
 
 ?>

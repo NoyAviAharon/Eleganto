@@ -1,15 +1,5 @@
 <?php
-$server_name = "localhost:3306";
-$user_name = "korenta_Elega1";
-$password = "123456";
-$database_name = "korenta_DB1";
-$conn = new mysqli($server_name, $user_name, $password, $database_name);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$query = "SELECT * FROM cart";
-$result = $conn->query($query);
+session_start();
 ?>
 
 <html lang="en">
@@ -101,45 +91,48 @@ $result = $conn->query($query);
         </h1>
       </div>
     </div>
-
-
   </header>
   <!--End of Header Section-->
 
-
-	 <table>
-        <thead>
-            <tr>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Color</th>
-                <th>Width</th>
-                <th>Height</th>
-                <th>Depth</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php while ($row = $result->fetch_assoc()): ?>
-            <tr>
-                <td><?php echo $row['code']; ?></td>
-                <td><?php echo $row['name']; ?></td>
-                <td><?php echo $row['color']; ?></td>
-                <td><?php echo $row['width']; ?></td>
-                <td><?php echo $row['height']; ?></td>
-                <td><?php echo $row['depth']; ?></td>
-                <td><?php echo $row['price']; ?></td>
-                <td><?php echo $row['quantity']; ?></td>
-                <td><?php echo $row['total_price']; ?></td>
-            </tr>
-            <?php endwhile; ?>
-        </tbody>
-    </table>
-    <div class="proceed">     
-		    <button class="back-to-cart-btn" onclick="window.location.href='registration.html'">Proceed to checkout</button>
-    </div><br>
+  <table>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Color</th>
+				<th>Width</th>
+				<th>Height</th>
+				<th>Depth</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Total Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+			if(isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
+				foreach ($_SESSION['cart'] as $product) {
+					echo "<tr>";
+					echo "<td>" . $product['name'] . "</td>";
+					echo "<td>" . $product['color'] . "</td>";
+					echo "<td>" . $product['width'] . "</td>";
+					echo "<td>" . $product['height'] . "</td>";
+					echo "<td>" . $product['depth'] . "</td>";
+					echo "<td>" . $product['price'] . "</td>";
+					echo "<td>" . $product['quantity'] . "</td>";
+					echo "<td>" . $product['total_price'] . "</td>";
+					echo "</tr>";
+					}
+				} else {
+					echo "<tr><td colspan='9'>Your cart is empty</td></tr>";
+				}
+			?>
+		</tbody>
+	</table>
+	
+    <form method="post" action="saveCart.php" style="text-align: center;>
+        <input type="hidden" name="session_id" value="<?php echo session_id(); ?>">
+        <button type="submit" name="continue_payment">Continue to Payment</button>
+    </form>
 
   <!--Skills Section-->
   <section class="skills py-5">

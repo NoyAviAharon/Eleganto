@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $server_name = "localhost:3306";
 $user_name = "korenta_Elega1";
 $password = "123456";
@@ -8,7 +10,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$Code = uniqid();
 $Name = $_POST["name"];
 $Color = $_POST["color"];
 $Width = $_POST["width"];
@@ -18,14 +19,23 @@ $Price = $_POST["price"];
 $Quantity = $_POST["quantity"];
 $TotalPrice = $_POST["total_price"];
 
-$query = "INSERT INTO cart (code, name, color, width, height, depth, price, quantity, total_price) 
-          VALUES ('$Code', '$Name', '$Color', '$Width', '$Height', '$Depth', '$Price', '$Quantity', '$TotalPrice')";
+$product = array(
+    "name" => $Name,
+    "color" => $Color,
+    "width" => $Width,
+    "height" => $Height,
+    "depth" => $Depth,
+    "price" => $Price,
+    "quantity" => $Quantity,
+    "total_price" => $TotalPrice
+);
 
-if ($conn->query($query) === FALSE) {
-    echo "Can not add new product. Error is: " . $conn->error;
-    exit();
+if(empty($_SESSION["cart"])) {
+    $_SESSION["cart"] = array($product);
+} else {
+    array_push($_SESSION["cart"], $product);
 }
 
-echo "The product you added entered your shopping cart!<br> <a href='products.html'>Click here back to shop</a>";
-
+header("Location: store.php?success=1");
+exit();
 ?>
