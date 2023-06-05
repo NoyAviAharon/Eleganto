@@ -433,37 +433,25 @@ transition: all 1s linear;
 }
 /* ############### END OF SINGLE PRODUCT ############## */
 
-table {
-      border-collapse: collapse;
-      width: 100%;
-      font-size: 1rem;
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0;
+        padding: 0;
     }
 
-    th,
-    td {
-      text-align: center;
-      padding: 0.5rem;
-      border-bottom: 1px solid #ddd;
+    th, td {
+        border: 1px solid black;
+        padding: 5px;
+        text-align: center;
     }
 
-    th {
-      background-color: #f2f2f2;
-      font-weight: bold;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 0.5rem;
-      box-sizing: border-box;
-    }
-    
-    
-    #product-img{
-      width: 100%;
-      max-width: 500px;
-    }
-
-    .product-viewer-title {
-      font-size: 24px;
+    /* Responsive styles for mobile devices */
+    @media (max-width: 390px) {
+        th, td {
+            padding: 2px;
+            font-size: 12px;
+            
+        }
     }
 
