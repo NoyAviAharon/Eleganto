@@ -72,7 +72,6 @@ session_start();
 
     <!--Cart icon-->
     <a href="store.php" class="navbar-icon mx-2 navbar-cart-icon">
-      <div class="cart-items">0</div>
       <i class="fas fa-shopping-cart"></i>
     </a>
 		<!--End of Cart icon-->
@@ -108,7 +107,7 @@ session_start();
 			</tr>
 		</thead>
 		<tbody>
-			<?php
+    		<?php
 			if(isset($_SESSION['cart']) && is_array($_SESSION['cart'])) {
 				foreach ($_SESSION['cart'] as $product) {
 					echo "<tr>";
@@ -370,7 +369,7 @@ session_start();
 
 	  cartItemsBody.appendChild(tr);
 	}
-
+	
   </script>
 
 
