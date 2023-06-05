@@ -67,6 +67,16 @@ url('../img/pageBcg/singleBcg.jpeg')
 center/cover fixed no-repeat;
 }
 
+.banner-single-product-small {
+min-height: 40vh;
+background: linear-gradient(
+rgba(255,255,255, 0.5),
+rgba(255,255,255, 0.5)
+),
+url('../img/pageBcg/productsBcg.jpeg')
+center/cover fixed no-repeat;
+}
+
 .banner-store {
   min-height: 60vh;
 background: linear-gradient(
@@ -446,3 +456,14 @@ table {
       padding: 0.5rem;
       box-sizing: border-box;
     }
+    
+    
+    #product-img{
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .product-viewer-title {
+      font-size: 24px;
+    }
+
