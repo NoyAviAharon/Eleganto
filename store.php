@@ -92,7 +92,8 @@ session_start();
     </div>
   </header>
   <!--End of Header Section-->
-
+	
+</br>
   <table>
 		<thead>
 			<tr>
@@ -127,7 +128,7 @@ session_start();
 			?>
 		</tbody>
 	</table>
-	
+</br>
     <form method="post" action="saveCart.php" style="text-align: center;>
         <input type="hidden" name="session_id" value="<?php echo session_id(); ?>">
         <button type="submit" name="continue_payment">Continue to Payment</button>
