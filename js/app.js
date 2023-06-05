@@ -77,7 +77,7 @@ const form = document.getElementById("product-form");
   });
 
   function calculatePrice() {
-  const pricePerUnit = 200;
+  const pricePerUnit =  parseInt(document.getElementById("price").value);
   const width = document.getElementById("width").value;
   const height = document.getElementById("height").value;
   const depth = document.getElementById("depth").value;
@@ -91,7 +91,7 @@ const form = document.getElementById("product-form");
 	}
 
     // calculate the price
-  const basePrice = 200;
+  const basePrice =  parseInt(document.getElementById("price").value);
   const widthPrice = Math.max(0, width - 160) / 10 * 5;
   const heightPrice = Math.max(0, height - 80) / 10 * 5;
   const depthPrice = Math.max(0, depth - 80) / 10 * 5;
@@ -278,24 +278,51 @@ function toggleColor(button) {
 }
 
 
-function openWindow() {
-  var newWindow = window.open("", "", "width=800,height=500,top=50,left=50");
-  newWindow.document.write('<html><head><title>3D Simulation View</title><link rel="stylesheet" type="text/css" href="css/qrcode.css"></head><body>');
-  newWindow.document.write('<div class="logo-img">');
-  newWindow.document.write('<img src="img/logo.png" alt="Logo">');
-  newWindow.document.write('</div>');
-  newWindow.document.write('<div class="container">');
-  newWindow.document.write('<div class="text">');
-  newWindow.document.write('<p>To view a 3D & AR simulation:</p>');
-  newWindow.document.write('<ol>');
-  newWindow.document.write('<li>Scan the QR code with your mobile device</li><br>');
-  newWindow.document.write('<li>Rotate the product that appears on the screen with your finger to view in 3D.</li><br>');
-  newWindow.document.write('<li>To view augmented reality (AR) through your camera - click "View In AR" on the top right.</li>');
-  newWindow.document.write('</ol>');
-  newWindow.document.write('</div>');
-  newWindow.document.write('<div class="img-container">');
-  newWindow.document.write('<img src="py/img-QRcode/qrcode_595dd625-64e1-4b87-9847-dadd1a1f18bf.png" alt="QR code">');
-  newWindow.document.write('</div>');
-  newWindow.document.write('</div>');
-  newWindow.document.write('</body></html>');
+var product_color_var = 'RED'; // Default color
+function openWindow(product_name_var) {
+  console.log("Product Name:", product_name_var+'-'+product_color_var);  
+  fetch('qr_code.php?'+ new URLSearchParams({product_name: product_name_var+'-'+product_color_var}))
+    .then(response => response.json())
+    .then(data => {
+      var image_url = data.image_url;
+      var newWindow = window.open("", "", "width=800,height=500,top=50,left=50");
+      newWindow.document.write('<html><head><title>3D Simulation View</title><link rel="stylesheet" type="text/css" href="css/qrcode.css"></head><body>');
+      newWindow.document.write('<div class="logo-img">');
+      newWindow.document.write('<img src="img/logo.png" alt="Logo">');
+      newWindow.document.write('</div>');
+      newWindow.document.write('<div class="container">');
+      newWindow.document.write('<div class="text">');
+      newWindow.document.write('<p>To view a 3D & AR simulation:</p>');
+      newWindow.document.write('<ol>');
+      newWindow.document.write('<li>Scan the QR code with your mobile device</li><br>');
+      newWindow.document.write('<li>Rotate the product that appears on the screen with your finger to view in 3D.</li><br>');
+      newWindow.document.write('<li>To view augmented reality (AR) through your camera - click "View In AR" on the top right.</li>');
+      newWindow.document.write('</ol>');
+      newWindow.document.write('</div>');
+      newWindow.document.write('<div class="img-container">');
+      newWindow.document.write(`<img src="${image_url}" alt="QR code">`);
+      newWindow.document.write('</div>');
+      newWindow.document.write('</div>');
+      newWindow.document.write('</body></html>');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+
+function changeImage(color) {
+  var img = document.getElementById("product-img");
+  img.src = "img/img-products/" + color + ".png";
+  var parts = color.split('-');
+  if (parts.length > 1) {
+    product_color_var = parts[1];
+    console.log("Product Name:", product_color_var);
+  }
+  
+  var container = document.querySelector('.image-row-container');
+  container.addEventListener('wheel', function(event) {
+    event.preventDefault();
+    container.scrollLeft += event.deltaY;
+  });
 }
