@@ -3870,7 +3870,7 @@ readers do not read off random characters that represent icons */
 
 .featured-store-link {
   position: absolute;
-  bottom: 50px;
+  bottom: 60px;
   right: 10px;
   width: 60px; /* Set a fixed width for the button */
   height: 30px; /* Set a fixed height for the button */
